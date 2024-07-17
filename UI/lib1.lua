@@ -118,10 +118,10 @@ local Colors = {
   }, {
       Utilities:Create("Frame", {
           Name = "Main",
-          Size = UDim2.new(0, 600, 0, 400),
+          Size = UDim2.new(0, 558, 0, 312),
           BackgroundColor3 = Color3.fromRGB(255, 255, 255), -- Colors.Primary
           ClipsDescendants = true,
-          Position = UDim2.new(0, 600, 0, 270)
+          Position = UDim2.new(0, 404, 0, 177)
       }, {
           Utilities:Create("UIGradient", {
               Color = ColorSequence.new({
