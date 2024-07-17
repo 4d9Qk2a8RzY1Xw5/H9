@@ -3,92 +3,92 @@
 
 local library = {
     flags = {}
-  }
-  library.Flags = library.flags
-  
-  --// Dependences --//
-  local CoreGui = game:GetService("CoreGui")
-  local TweenService = game:GetService("TweenService")
-  local UserInputService = game:GetService("UserInputService")
-  local RunService = game:GetService("RunService")
-  
-  local ViewportSize = workspace.CurrentCamera.ViewportSize
-  
-  local Mouse = game.Players.LocalPlayer:GetMouse()
-  
-  local Utilities = {}
+}
+library.Flags = library.flags
 
-  --// Compatibility //--
-  local request = syn and syn.request or http and http.request or http_request or request or httprequest
-  local getcustomasset = getcustomasset or getsynasset
-  local isfolder = isfolder or syn_isfolder or is_folder
-  local makefolder = makefolder or make_folder or createfolder or create_folder
-  --//
+--// Dependences --//
+local CoreGui = game:GetService("CoreGui")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
 
-  local DropIndex = 9999
-  
-  function Utilities:Create(Inst, Properties, Childs)
-  local Instance = Instance.new(Inst)
-  local Properties = Properties or {}
-  local Childs = Childs or {}
-  
-  local BlacklistedProps = {
-      BorderSizePixel = 0,
-      Text = "",
-      BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-  }
-  
-  for blprop, v in pairs(BlacklistedProps) do
-      pcall(function()
-          Instance[blprop] = v
-      end)
-  end
-  
-  for prop, v in pairs(Properties) do
-      Instance[prop] = v
-  end
-  
-  for _, child in pairs(Childs) do
-      child.Parent = Instance
-  end
-  
-  return Instance
-  end
+local ViewportSize = workspace.CurrentCamera.ViewportSize
 
-  function Utilities:Round(Number, Increment)
+local Mouse = game.Players.LocalPlayer:GetMouse()
+
+local Utilities = {}
+
+--// Compatibility //--
+local request = syn and syn.request or http and http.request or http_request or request or httprequest
+local getcustomasset = getcustomasset or getsynasset
+local isfolder = isfolder or syn_isfolder or is_folder
+local makefolder = makefolder or make_folder or createfolder or create_folder
+--//
+
+local DropIndex = 9999
+
+function Utilities:Create(Inst, Properties, Childs)
+    local Instance = Instance.new(Inst)
+    local Properties = Properties or {}
+    local Childs = Childs or {}
+
+    local BlacklistedProps = {
+        BorderSizePixel = 0,
+        Text = "",
+        BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    }
+
+    for blprop, v in pairs(BlacklistedProps) do
+        pcall(function()
+            Instance[blprop] = v
+        end)
+    end
+
+    for prop, v in pairs(Properties) do
+        Instance[prop] = v
+    end
+
+    for _, child in pairs(Childs) do
+        child.Parent = Instance
+    end
+
+    return Instance
+end
+
+function Utilities:Round(Number, Increment)
     Increment = 1 / Increment
 
     return math.round(Number * Increment) / Increment
 end
-  
-  function Utilities:Tween(Inst, Speed, Properties, Style, Direction)
-  local Instance = Inst or error("#1 argument: instance expected.")
-  local Speed = Speed or .125
-  local Properties = typeof(Properties) == "table" and Properties or error("#3 argument: table expected, got: "..typeof(Properties))
-  local Style = Style or Enum.EasingStyle.Linear
-  local Direction = Direction or Enum.EasingDirection.Out
-  
-  local Tween = TweenService:Create(Instance, TweenInfo.new(Speed, Style, Direction), Properties)
-  Tween:Play()
-  
-  return Tween
-  end
 
-  function Utilities:GetXY(GuiObject)
-	local Max, May = GuiObject.AbsoluteSize.X, GuiObject.AbsoluteSize.Y
-	local Px, Py = math.clamp(Mouse.X - GuiObject.AbsolutePosition.X, 0, Max), math.clamp(Mouse.Y - GuiObject.AbsolutePosition.Y, 0, May)
-	return Px/Max, Py/May
-  end
+function Utilities:Tween(Inst, Speed, Properties, Style, Direction)
+    local Instance = Inst or error("#1 argument: instance expected.")
+    local Speed = Speed or .125
+    local Properties = typeof(Properties) == "table" and Properties or error("#3 argument: table expected, got: "..typeof(Properties))
+    local Style = Style or Enum.EasingStyle.Linear
+    local Direction = Direction or Enum.EasingDirection.Out
 
-  function Utilities:GetMouse()
-	return Vector2.new(UserInputService:GetMouseLocation().X + 1, UserInputService:GetMouseLocation().Y - 35)
-  end
+    local Tween = TweenService:Create(Instance, TweenInfo.new(Speed, Style, Direction), Properties)
+    Tween:Play()
 
-  if not isfolder("SoulLink") then
+    return Tween
+end
+
+function Utilities:GetXY(GuiObject)
+    local Max, May = GuiObject.AbsoluteSize.X, GuiObject.AbsoluteSize.Y
+    local Px, Py = math.clamp(Mouse.X - GuiObject.AbsolutePosition.X, 0, Max), math.clamp(Mouse.Y - GuiObject.AbsolutePosition.Y, 0, May)
+    return Px/Max, Py/May
+end
+
+function Utilities:GetMouse()
+    return Vector2.new(UserInputService:GetMouseLocation().X + 1, UserInputService:GetMouseLocation().Y - 35)
+end
+
+if not isfolder("SoulLink") then
     makefolder("SoulLink")
-  end
-  --//
-  
+end
+--//
+
 local Colors = {
     Primary = Color3.fromRGB(54, 57, 63),  -- Background primary
     Secondary = Color3.fromRGB(47, 49, 54),  -- Background secondary
@@ -104,235 +104,142 @@ local Colors = {
     AccentText = Color3.fromRGB(255, 255, 255)  -- Accent text color
 }
 
-  
-  function library:Window(WindowArgs)
-  WindowArgs.Text = WindowArgs.Text or "Window"
-  
-  local WindowTable = {}
-  WindowTable.__index = WindowTable
-  
-  self.Tabs = 0
-  self.Hovering = false
-  
-  local SelectedTab = nil
-  
-  local Window = Utilities:Create("ScreenGui", {
-      Name = "SoulLink",
-      ZIndexBehavior = Enum.ZIndexBehavior.Global
-  }, {
-      Utilities:Create("Frame", {
-          Name = "Main",
-          Size = UDim2.new(0, 600, 0, 400),
-          BackgroundColor3 = Color3.fromRGB(255, 255, 255), -- Colors.Primary
-          ClipsDescendants = true,
-          Position = UDim2.new(0, 600, 0, 270)
-      }, {
-          Utilities:Create("UIGradient", {
-              Color = ColorSequence.new({
-                  ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 25, 27)),
-                  ColorSequenceKeypoint.new(1, Color3.fromRGB(12, 10, 12)),
-              }),
-              Offset = Vector2.new(0, 0.65),
-              Rotation = 90
-          }),
-          Utilities:Create("Frame", {
-              Name = "Containers",
-              Size = UDim2.new(1, 0, 1, -50),
-              BackgroundTransparency = 1,
-              Position = UDim2.new(0, 0, 0, 26)
-          }),
-          Utilities:Create("Frame", {
-              Name = "Bottom",
-              Size = UDim2.new(1, 0, 0, 24),
-              AnchorPoint = Vector2.new(.5, 1),
-              Position = UDim2.new(.5, 0, 1, 0),
-              BackgroundColor3 = Colors.Secondary,
-              ZIndex = DropIndex + 5
-          }, {
-              Utilities:Create("Frame", {
-                  Name = "Divider",
-                  Size = UDim2.new(1, 0, 0, 1),
-                  AnchorPoint = Vector2.new(.5, 0),
-                  BackgroundColor3 = Colors.Divider,
-                  Position = UDim2.new(.5, 0, 0, 0),
-                  ZIndex = DropIndex + 5
-              }),
-              Utilities:Create("TextLabel", {
-                  Name = "BottomText",
-                  Text = WindowArgs.Text,
-                  Size = UDim2.new(1, -10, 0, 24),
-                  BackgroundTransparency = 1,
-                  Position = UDim2.new(0, 8, 0, 0),
-                  RichText = true,
-                  TextXAlignment = Enum.TextXAlignment.Left,
-                  TextSize = 13,
-                  Font = Enum.Font.SourceSansBold,
-                  TextColor3 = Colors.PrimaryText,
-                  ZIndex = DropIndex + 5
-              }, {
-                Utilities:Create("TextButton", {
-                    Name = "CloseConsole",
-                    BackgroundTransparency = 1,
-                    Text = "",
+function library:Window(WindowArgs)
+    WindowArgs.Text = WindowArgs.Text or "Window"
+
+    local WindowTable = {}
+    WindowTable.__index = WindowTable
+
+    self.Tabs = 0
+    self.Hovering = false
+
+    local SelectedTab = nil
+
+    local Window = Utilities:Create("ScreenGui", {
+        Name = "SoulLink",
+        ZIndexBehavior = Enum.ZIndexBehavior.Global
+    }, {
+        Utilities:Create("Frame", {
+            Name = "Main",
+            Size = UDim2.new(0, 600, 0, 400),
+            BackgroundColor3 = Color3.fromRGB(255, 255, 255), -- Colors.Primary
+            ClipsDescendants = true,
+            Position = UDim2.new(0, 600, 0, 270)
+        }, {
+            Utilities:Create("UIGradient", {
+                Color = ColorSequence.new({
+                    ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 25, 27)),
+                    ColorSequenceKeypoint.new(1, Color3.fromRGB(12, 10, 12)),
+                }),
+                Offset = Vector2.new(0, 0.65),
+                Rotation = 90
+            }),
+            Utilities:Create("Frame", {
+                Name = "Containers",
+                Size = UDim2.new(1, 0, 1, -50),
+                BackgroundTransparency = 1,
+                Position = UDim2.new(0, 0, 0, 26)
+            }),
+            Utilities:Create("Frame", {
+                Name = "Bottom",
+                Size = UDim2.new(1, 0, 0, 24),
+                AnchorPoint = Vector2.new(.5, 1),
+                Position = UDim2.new(.5, 0, 1, 0),
+                BackgroundColor3 = Colors.Secondary,
+                ZIndex = DropIndex + 5
+            }, {
+                Utilities:Create("Frame", {
+                    Name = "Divider",
+                    Size = UDim2.new(1, 0, 0, 1),
+                    AnchorPoint = Vector2.new(.5, 0),
+                    BackgroundColor3 = Colors.Divider,
+                    Position = UDim2.new(.5, 0, 0, 0),
+                    ZIndex = DropIndex + 5
+                }),
+                Utilities:Create("TextLabel", {
+                    Name = "BottomText",
+                    Text = WindowArgs.Text,
                     Size = UDim2.new(1, -10, 0, 24),
-                    ZIndex = 11001
+                    BackgroundTransparency = 1,
+                    Position = UDim2.new(0, 8, 0, 0),
+                    RichText = true,
+                    TextXAlignment = Enum.TextXAlignment.Left,
+                    TextSize = 13,
+                    Font = Enum.Font.SourceSansBold,
+                    TextColor3 = Colors.PrimaryText,
+                    ZIndex = DropIndex + 5
                 })
-              })
-          }),
-          Utilities:Create("Frame", {
-              Name = "Topbar",
-              AnchorPoint = Vector2.new(.5, 0),
-              Position = UDim2.new(.5, 0, 0, 0),
-              BackgroundColor3 = Colors.Secondary,
-              Size = UDim2.new(1, 0, 0, 26)
-          }, {
-              Utilities:Create("Frame", {
-                  Name = "Divider",
-                  Size = UDim2.new(1, 0, 0, 1),
-                  BackgroundColor3 = Colors.Divider,
-                  AnchorPoint = Vector2.new(0.5, 1),
-                  ZIndex = 2,
-                  Position = UDim2.new(.5, 0, 1, 0)
-              }),
-              Utilities:Create("Frame", {
-                  Name = "TabContainer",
-                  Size = UDim2.new(1, 0, 0, 26),
-                  BackgroundTransparency = 1,
-                  ClipsDescendants = true
-              }, {
-                  Utilities:Create("UIListLayout", {
-                      FillDirection = Enum.FillDirection.Horizontal
-                  })
-              })
-          })
-      })
-  })
-
-  UserInputService.InputBegan:Connect(function(Input, GameProcessed)
-    if Input.KeyCode == Enum.KeyCode.LeftAlt and not GameProcessed then
-        Window.Main.Visible = not Window.Main.Visible
-    end
-  end)
-
-  local Console = Utilities:Create("Frame", {
-    Name = "Console",
-    Size = UDim2.new(0, 500, 0, 300),
-    Parent = Window.Main,
-    AnchorPoint = Vector2.new(.5, .5),
-    Visible = false,
-    ZIndex = 11000,
-    Position = UDim2.fromScale(.5, .5),
-    BackgroundColor3 = Colors.Primary
-  }, {
-    Utilities:Create("UIStroke", {
-        Color = Colors.Divider
-    }),
-    Utilities:Create("ScrollingFrame", {
-        Name = "ConsoleContainer",
-        Size = UDim2.new(0, 500, 0, 276),
-        CanvasSize = UDim2.new(0, 0, 0, 0),
-        AutomaticCanvasSize = Enum.AutomaticSize.Y,
-        Position = UDim2.new(0, 0, 0, 24),
-        ScrollBarThickness = 0,
-        BackgroundTransparency = 1,
-        ZIndex = 11001
-    }, {
-        Utilities:Create("UIListLayout")
-    }),
-    Utilities:Create("Frame", {
-        Name = "ConsoleTopbar", 
-        AnchorPoint = Vector2.new(.5, 0),
-        Position = UDim2.new(.5, 0, 0, 0),
-        BackgroundColor3 = Colors.Secondary,
-        ZIndex = 11001,
-        Size = UDim2.new(1, 0, 0, 24)
-    }, {
-        Utilities:Create("TextLabel", {
-            Name = "ConsoleText",
-            Text = "Console",
-            Size = UDim2.new(1, -10, 0, 24),
-            BackgroundTransparency = 1,
-            Position = UDim2.new(0, 8, 0, 0),
-            RichText = true,
-            TextXAlignment = Enum.TextXAlignment.Left,
-            TextSize = 13,
-            Font = Enum.Font.SourceSansBold,
-            TextColor3 = Colors.PrimaryText,
-            ZIndex = 11001
+            }),
+            Utilities:Create("Frame", {
+                Name = "Topbar",
+                AnchorPoint = Vector2.new(.5, 0),
+                Position = UDim2.new(.5, 0, 0, 0),
+                BackgroundColor3 = Colors.Secondary,
+                Size = UDim2.new(1, 0, 0, 26)
+            }, {
+                Utilities:Create("Frame", {
+                    Name = "Divider",
+                    Size = UDim2.new(1, 0, 0, 1),
+                    BackgroundColor3 = Colors.Divider,
+                    AnchorPoint = Vector2.new(0.5, 1),
+                    ZIndex = 2,
+                    Position = UDim2.new(.5, 0, 1, 0)
+                }),
+                Utilities:Create("Frame", {
+                    Name = "TabContainer",
+                    Size = UDim2.new(1, 0, 0, 26),
+                    BackgroundTransparency = 1,
+                    ClipsDescendants = true
+                }, {
+                    Utilities:Create("UIListLayout", {
+                        FillDirection = Enum.FillDirection.Horizontal
+                    })
+                })
+            })
         })
     })
-  })
 
-  local consoleContainer = Console.ConsoleContainer
+    UserInputService.InputBegan:Connect(function(Input, GameProcessed)
+        if Input.KeyCode == Enum.KeyCode.LeftAlt and not GameProcessed then
+            Window.Main.Visible = not Window.Main.Visible
+        end
+    end)
 
-  local scrollSize
-  consoleContainer.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
-    scrollSize = consoleContainer.UIListLayout.AbsoluteContentSize.Y
+    local bottomText = Window.Main.Bottom.BottomText
 
-    consoleContainer.CanvasPosition = Vector2.new(0, scrollSize)
-  end)
+    bottomText.MouseEnter:Connect(function()
+        Utilities:Tween(bottomText, .125, {TextColor3 = Colors.Accent})
+    end)
 
-  local bottomText = Window.Main.Bottom.BottomText
-
-  bottomText.MouseEnter:Connect(function()
-    Utilities:Tween(bottomText, .125, {TextColor3 = Colors.Accent})
-  end)
-
-  bottomText.MouseLeave:Connect(function()
-    Utilities:Tween(bottomText, .125, {TextColor3 = Colors.PrimaryText})
-  end)
-
-  bottomText.CloseConsole.MouseButton1Click:Connect(function()
-    WindowTable:ToggleConsole()
-  end)
-
-  function WindowTable:ToggleConsole()
-    Console.Visible = not Console.Visible
-  end
-
-  local coloredMessage = true
-  function WindowTable:Message(consoleArgs)
-    consoleArgs.Text = consoleArgs.Text or "Message"
-    consoleArgs.Color = consoleArgs.Color or Colors.PrimaryText
-
-    coloredMessage = not coloredMessage
-
-    local currentDate = os.date("%X")
-
-    local finalMessage = string.format("[%s] %s", currentDate, consoleArgs.Text)
-
-    local Message = Utilities:Create("Frame", {
-        Name = "ConsoleMessage",
-        BackgroundColor3 = Colors.Divider,
-        BackgroundTransparency = coloredMessage and 0 or 1,
-        Size = UDim2.new(0, 500, 0, 23),
-        ZIndex = 11002,
-        Parent = Console.ConsoleContainer
-    }, {
-        Utilities:Create("TextLabel", {
-            Name = "MessageText",
-            Text = finalMessage,
-            Size = UDim2.new(1, 0, 0, 23),
-            BackgroundTransparency = 1,
-            Position = UDim2.new(0, 3, 0, 0),
-            RichText = true,
-            TextXAlignment = Enum.TextXAlignment.Left,
-            TextSize = 13,
-            Font = Enum.Font.SourceSansBold,
-            TextColor3 = consoleArgs.Color,
-            ZIndex = 11002
-        })
-    })
-  end
+    bottomText.MouseLeave:Connect(function()
+        Utilities:Tween(bottomText, .125, {TextColor3 = Colors.PrimaryText})
+    end)
 
     Window.Parent = CoreGui
 
-  local TabContainer = Window.Main.Topbar.TabContainer
-  local Containers = Window.Main.Containers
+    local TabContainer = Window.Main.Topbar.TabContainer
+    local Containers = Window.Main.Containers
 
-  TabContainer.ChildAdded:Connect(function()
-      self.Tabs = self.Tabs + 1
-  end)
+    local function ResizeTabs()
+        local TabSize = 1 / self.Tabs
+
+        task.spawn(function()
+            for _, v in pairs(TabContainer:GetChildren()) do
+                if v.ClassName == "Frame" then
+                    v.Size = UDim2.new(TabSize, 0, 0, 26)
+                end
+            end
+        end)
+    end
+
+    TabContainer.ChildAdded:Connect(function()
+        self.Tabs = self.Tabs + 1
+
+        ResizeTabs()
+    end)
+
+    return WindowTable
+end
 
   local dragging = false
   local dragInput, mousePos, framePos
@@ -408,6 +315,8 @@ local Colors = {
           BackgroundTransparency = 1
       })
   })
+
+  ResizeTabs()
 
   local ContainerHolder = Utilities:Create("Frame", {
     Name = "ContainerHolder",
@@ -544,6 +453,23 @@ local Colors = {
         })
       })
   })
+
+  local SectionY = 36
+
+  SizeX:GetPropertyChangedSignal("Value"):Connect(function()
+    local Size = SizeX.Value / 2 - 14
+    Section.Size = UDim2.new(0, Size, 0, SectionY)
+    Section.Divider.Size = UDim2.new(0, Size, 0, 1)
+  end)
+
+  local SectionContainer = Section.Container
+
+  SectionContainer.ChildAdded:Connect(function()
+    SectionY = SectionY + 21
+
+    Section.Size = UDim2.new(0, 286, 0, SectionY)
+    SectionContainer.Size = UDim2.new(0, 286, 0, SectionY)
+  end)
 
   function SectionTable:Check(CheckArgs)
   CheckArgs.Text = CheckArgs.Text or "Check"
@@ -796,7 +722,12 @@ local Colors = {
         })
     })
   })
-				
+
+  SizeX:GetPropertyChangedSignal("Value"):Connect(function()
+    local Size = SizeX.Value / 2 - 14
+    Slider.Size = UDim2.new(0, Size, 0, 21)
+  end)
+
   Slider.SliderOuter.MouseEnter:Connect(function()
     Utilities:Tween(Slider.SliderOuter.UIStroke, .125, {Color = Colors.Tertiary})
     Utilities:Tween(Slider.SliderOuter, .125, {BackgroundColor3 = Colors.Hovering})
@@ -982,6 +913,11 @@ local Colors = {
             })
         })
     })
+
+    SizeX:GetPropertyChangedSignal("Value"):Connect(function()
+        local Size = SizeX.Value / 2 - 14
+        Dropdown.Size = UDim2.new(0, Size, 0, 21)
+      end)
 
     Dropdown.DropdownFrame.MouseEnter:Connect(function()
         if not State then
