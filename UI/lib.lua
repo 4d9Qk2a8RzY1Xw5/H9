@@ -410,8 +410,6 @@ end
       })
   })
 
-  ResizeTabs()
-
   local ContainerHolder = Utilities:Create("Frame", {
     Name = "ContainerHolder",
     Size = UDim2.new(1, 0, 1, 0),
