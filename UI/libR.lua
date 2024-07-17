@@ -1059,12 +1059,11 @@ local Colors = {
                 Utilities:Create("UIStroke", {
                     Color = Colors.AccentDivider
                 }),
-                Utilities:Create("ImageLabel", {
+                Utilities:Create("Frame", {
                     Name = "DropdownImage",
                     Size = UDim2.new(0, 10, 0, 10),
                     BackgroundTransparency = 1,
                     Rotation = 0, -- 180
-                    Image = getcustomasset("PPHUD/Arrow.png"),
                     AnchorPoint = Vector2.new(.5, .5),
                     Position = UDim2.new(.5, 0, .5, 0),
                     ZIndex = DropdownTable.Index
