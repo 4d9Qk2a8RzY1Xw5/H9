@@ -546,23 +546,6 @@ end
       })
   })
 
-  local SectionY = 36
-
-  SizeX:GetPropertyChangedSignal("Value"):Connect(function()
-    local Size = SizeX.Value / 2 - 14
-    Section.Size = UDim2.new(0, Size, 0, SectionY)
-    Section.Divider.Size = UDim2.new(0, Size, 0, 1)
-  end)
-
-  local SectionContainer = Section.Container
-
-  SectionContainer.ChildAdded:Connect(function()
-    SectionY = SectionY + 21
-
-    Section.Size = UDim2.new(0, 286, 0, SectionY)
-    SectionContainer.Size = UDim2.new(0, 286, 0, SectionY)
-  end)
-
   function SectionTable:Check(CheckArgs)
   CheckArgs.Text = CheckArgs.Text or "Check"
   CheckArgs.Flag = CheckArgs.Flag or nil
