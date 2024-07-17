@@ -989,11 +989,6 @@ end
         })
     })
 
-    SizeX:GetPropertyChangedSignal("Value"):Connect(function()
-        local Size = SizeX.Value / 2 - 14
-        Dropdown.Size = UDim2.new(0, Size, 0, 21)
-      end)
-
     Dropdown.DropdownFrame.MouseEnter:Connect(function()
         if not State then
             Utilities:Tween(Dropdown.DropdownFrame, .125, {BackgroundColor3 = Colors.Hovering})
