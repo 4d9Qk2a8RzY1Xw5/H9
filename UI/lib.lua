@@ -89,22 +89,39 @@ end
   end
   --//
   
-  --// Colors --//
-  local Colors = {
-      Primary = Color3.fromRGB(27, 25, 27),
-      Secondary = Color3.fromRGB(42, 40, 42),
-      Tertiary = Color3.fromRGB(74, 73, 74),
-      Divider = Color3.fromRGB(46, 45, 46),
-      AccentDivider = Color3.fromRGB(54, 54, 54),
-      PrimaryText = Color3.fromRGB(211, 211, 211),
-      SecondaryText = Color3.fromRGB(122, 122, 122),
-      TertiaryText = Color3.fromRGB(158, 158, 158),
-      Hovering = Color3.fromRGB(56, 53, 56),
-      Accent = Color3.fromRGB(173, 216, 230),
-      DarkerAccent = Color3.fromRGB(173, 226, 252),
-      AccentText = Color3.fromRGB(235, 235, 235)
-  }
-  --//
+--// Themes --//
+local Themes = {
+    Basic = {
+        Primary = Color3.fromRGB(27, 25, 27),
+        Secondary = Color3.fromRGB(42, 40, 42),
+        Tertiary = Color3.fromRGB(74, 73, 74),
+        Divider = Color3.fromRGB(46, 45, 46),
+        AccentDivider = Color3.fromRGB(54, 54, 54),
+        PrimaryText = Color3.fromRGB(211, 211, 211),
+        SecondaryText = Color3.fromRGB(122, 122, 122),
+        TertiaryText = Color3.fromRGB(158, 158, 158),
+        Hovering = Color3.fromRGB(56, 53, 56),
+        Accent = Color3.fromRGB(173, 216, 230),
+        DarkerAccent = Color3.fromRGB(173, 226, 252),
+        AccentText = Color3.fromRGB(235, 235, 235)
+    },
+    Discord = {
+        Primary = Color3.fromRGB(54, 57, 63),  -- Background primary
+        Secondary = Color3.fromRGB(47, 49, 54),  -- Background secondary
+        Tertiary = Color3.fromRGB(32, 34, 37),  -- Background tertiary
+        Divider = Color3.fromRGB(42, 44, 49),  -- Divider lines
+        AccentDivider = Color3.fromRGB(55, 57, 63),  -- Accent divider lines
+        PrimaryText = Color3.fromRGB(255, 255, 255),  -- Primary text
+        SecondaryText = Color3.fromRGB(185, 187, 190),  -- Secondary text
+        TertiaryText = Color3.fromRGB(150, 152, 157),  -- Tertiary text
+        Hovering = Color3.fromRGB(64, 68, 75),  -- Hovering background
+        Accent = Color3.fromRGB(88, 101, 242),  -- Accent color (Discord blurple)
+        DarkerAccent = Color3.fromRGB(71, 82, 196),  -- Darker accent color
+        AccentText = Color3.fromRGB(255, 255, 255)  -- Accent text color
+    }
+}
+
+local currentTheme = "Discord"
   
   function library:Window(WindowArgs)
   WindowArgs.Text = WindowArgs.Text or "Window"
