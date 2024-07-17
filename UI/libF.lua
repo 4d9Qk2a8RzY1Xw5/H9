@@ -153,11 +153,10 @@ local Colors = {
                   Position = UDim2.new(.5, 0, 0, 0),
                   ZIndex = DropIndex + 5
               }),
-              Utilities:Create("ImageLabel", {
+              Utilities:Create("Frame", {
                 Name = "ResizeIcon",
                 Size = UDim2.new(0, 10, 0, 10),
                 BackgroundTransparency = 1,
-                Image = getcustomasset("PPHUD/Resize.png"),
                 AnchorPoint = Vector2.new(1, 1),
                 Position = UDim2.new(1, 0, 1, 0),
                 ZIndex = DropIndex + 5
@@ -377,7 +376,7 @@ local Colors = {
   ResizeButton.MouseButton1Down:Connect(function()
   local ResizeMove, ResizeKill
   
-  Utilities:Tween(Window.Main.Bottom.ResizeIcon, .125, {ImageColor3 = Colors.Accent})
+  Utilities:Tween(Window.Main.Bottom.ResizeIcon, .125, {BackgroundColor3 = Colors.Accent})
 
   ResizeMove = Mouse.Move:Connect(function()
     Resize()
@@ -388,7 +387,7 @@ local Colors = {
         ResizeMove:Disconnect()
         ResizeKill:Disconnect()
 
-        Utilities:Tween(Window.Main.Bottom.ResizeIcon, .125, {ImageColor3 = Color3.fromRGB(255, 255, 255)})
+        Utilities:Tween(Window.Main.Bottom.ResizeIcon, .125, {BackgroundColor3 = Color3.fromRGB(255, 255, 255)})
     end
   end)
   
