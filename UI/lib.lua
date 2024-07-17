@@ -797,12 +797,7 @@ end
         })
     })
   })
-
-  SizeX:GetPropertyChangedSignal("Value"):Connect(function()
-    local Size = SizeX.Value / 2 - 14
-    Slider.Size = UDim2.new(0, Size, 0, 21)
-  end)
-
+				
   Slider.SliderOuter.MouseEnter:Connect(function()
     Utilities:Tween(Slider.SliderOuter.UIStroke, .125, {Color = Colors.Tertiary})
     Utilities:Tween(Slider.SliderOuter, .125, {BackgroundColor3 = Colors.Hovering})
