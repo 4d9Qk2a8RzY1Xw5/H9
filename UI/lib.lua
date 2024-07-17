@@ -107,7 +107,7 @@ end
       TertiaryText = Color3.fromRGB(158, 158, 158),
       Hovering = Color3.fromRGB(56, 53, 56),
       Accent = Color3.fromRGB(173, 216, 230),
-      DarkerAccent = Color3.fromRGB(87, 167, 26),
+      DarkerAccent = Color3.fromRGB(173, 226, 252),
       AccentText = Color3.fromRGB(235, 235, 235)
   }
   --//
@@ -124,7 +124,7 @@ end
   local SelectedTab = nil
   
   local Window = Utilities:Create("ScreenGui", {
-      Name = "PPHUD",
+      Name = "SoulLink",
       ZIndexBehavior = Enum.ZIndexBehavior.Global
   }, {
       Utilities:Create("Frame", {
