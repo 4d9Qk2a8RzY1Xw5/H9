@@ -84,8 +84,8 @@ end
 	return Vector2.new(UserInputService:GetMouseLocation().X + 1, UserInputService:GetMouseLocation().Y - 35)
   end
 
-  if not isfolder("PPHUD") then
-    makefolder("PPHUD")
+  if not isfolder("SoulLink") then
+    makefolder("SoulLink")
   end
   --//
   
@@ -328,66 +328,11 @@ end
 
     Window.Parent = CoreGui
 
-  local ResizeButton = Window.Main.Bottom.ResizeIcon.ResizeButton
   local TabContainer = Window.Main.Topbar.TabContainer
   local Containers = Window.Main.Containers
 
-  local SizeX = Instance.new("NumberValue", Window.Main)
-  SizeX.Name = "X"
-
-  local SizeY = Instance.new("NumberValue", Window.Main)
-  SizeY.Name = "Y"
-
-  local function ResizeTabs()
-    local TabSize = 1 / self.Tabs
-    
-    task.spawn(function()
-      for _, v in pairs(TabContainer:GetChildren()) do
-          if v.ClassName == "Frame" then
-              v.Size = UDim2.new(TabSize, 0, 0, 26)
-          end
-      end
-    end)
-  end
-
-  local function Resize()
-    local MouseLocation = Utilities:GetMouse()
-    local X = math.clamp(MouseLocation.X - Window.Main.AbsolutePosition.X, 300, 1300)
-    local Y = math.clamp(MouseLocation.Y - Window.Main.AbsolutePosition.Y, 165, 730)
-    
-    SizeX.Value = X
-    SizeY.Value = Y
-
-    Utilities:Tween(Window.Main, .05, {Size = UDim2.new(0, X, 0, Y)})
-
-    ResizeTabs()
-  end
-
-  ResizeButton.MouseButton1Down:Connect(function()
-  local ResizeMove, ResizeKill
-  
-  Utilities:Tween(Window.Main.Bottom.ResizeIcon, .125, {ImageColor3 = Colors.Accent})
-
-  ResizeMove = Mouse.Move:Connect(function()
-    Resize()
-  end)
-
-  ResizeKill = UserInputService.InputEnded:Connect(function(UserInput)
-    if UserInput.UserInputType == Enum.UserInputType.MouseButton1 then
-        ResizeMove:Disconnect()
-        ResizeKill:Disconnect()
-
-        Utilities:Tween(Window.Main.Bottom.ResizeIcon, .125, {ImageColor3 = Color3.fromRGB(255, 255, 255)})
-    end
-  end)
-  
-    --TweenService:Create(Window.Mai, TweenInfo.new(0.09, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(Scale,0,0,14)}):Play()
-  end)
-
   TabContainer.ChildAdded:Connect(function()
       self.Tabs = self.Tabs + 1
-  
-      ResizeTabs()
   end)
 
   local dragging = false
