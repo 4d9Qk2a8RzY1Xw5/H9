@@ -87,19 +87,20 @@ end
   --//
   
 Colors = {
-    Primary = Color3.fromRGB(176, 224, 230),    -- Icy blue primary
-    Secondary = Color3.fromRGB(173, 216, 230),  -- Lighter icy blue secondary
-    Tertiary = Color3.fromRGB(135, 206, 235),   -- Light blue tertiary
-    Divider = Color3.fromRGB(160, 210, 227),    -- Light blue divider lines
-    AccentDivider = Color3.fromRGB(144, 193, 207),  -- Accent light blue divider lines
+    Primary = Color3.fromRGB(255, 182, 193),    -- Pink primary
+    Secondary = Color3.fromRGB(255, 192, 203),  -- Lighter pink secondary
+    Tertiary = Color3.fromRGB(255, 105, 180),   -- Hot pink tertiary
+    Divider = Color3.fromRGB(255, 192, 203),    -- Lighter pink divider lines
+    AccentDivider = Color3.fromRGB(255, 105, 180),  -- Accent hot pink divider lines
     PrimaryText = Color3.fromRGB(0, 0, 0),      -- Black primary text
-    SecondaryText = Color3.fromRGB(100, 149, 237), -- Cornflower blue secondary text
-    TertiaryText = Color3.fromRGB(176, 196, 222),  -- Light blue tertiary text
-    Hovering = Color3.fromRGB(135, 206, 235),   -- Light blue hovering background
-    Accent = Color3.fromRGB(173, 216, 230),     -- Lighter icy blue accent color
-    DarkerAccent = Color3.fromRGB(135, 206, 250),  -- Lighter icy blue accent color
-    AccentText = Color3.fromRGB(144, 193, 207)  -- Accent text color
+    SecondaryText = Color3.fromRGB(255, 182, 193), -- Pink secondary text
+    TertiaryText = Color3.fromRGB(255, 105, 180),  -- Hot pink tertiary text
+    Hovering = Color3.fromRGB(255, 182, 193),   -- Pink hovering background
+    Accent = Color3.fromRGB(255, 105, 180),     -- Hot pink accent color
+    DarkerAccent = Color3.fromRGB(255, 20, 147),  -- Darker hot pink accent color
+    AccentText = Color3.fromRGB(255, 192, 203)  -- Lighter pink accent text
 }
+
 
 
 
