@@ -87,19 +87,20 @@ end
   --//
   
 Colors = {
-    Primary = Color3.fromRGB(25, 211, 97),     -- Background primary (green)
-    Secondary = Color3.fromRGB(15, 151, 69),   -- Background secondary (darker green)
-    Tertiary = Color3.fromRGB(10, 101, 49),    -- Background tertiary (even darker green)
-    Divider = Color3.fromRGB(0, 0, 0),          -- Divider lines (black)
-    AccentDivider = Color3.fromRGB(15, 151, 69),-- Accent divider lines (same as secondary)
-    PrimaryText = Color3.fromRGB(255, 255, 255),-- Primary text (white)
-    SecondaryText = Color3.fromRGB(185, 187, 190),-- Secondary text (light gray)
-    TertiaryText = Color3.fromRGB(150, 152, 157),-- Tertiary text (gray)
-    Hovering = Color3.fromRGB(15, 151, 69),     -- Hovering background (same as secondary)
-    Accent = Color3.fromRGB(29, 185, 84),       -- Accent color (Spotify green)
-    DarkerAccent = Color3.fromRGB(10, 101, 49), -- Darker accent color (same as tertiary)
-    AccentText = Color3.fromRGB(255, 255, 255)  -- Accent text color (white)
+    Primary = Color3.fromRGB(63, 32, 32),        -- Background primary (dark red)
+    Secondary = Color3.fromRGB(54, 27, 27),      -- Background secondary (darker red)
+    Tertiary = Color3.fromRGB(37, 18, 18),       -- Background tertiary (even darker red)
+    Divider = Color3.fromRGB(49, 24, 24),        -- Divider lines (dark red)
+    AccentDivider = Color3.fromRGB(63, 32, 32),  -- Accent divider lines (dark red)
+    PrimaryText = Color3.fromRGB(255, 255, 255), -- Primary text (white)
+    SecondaryText = Color3.fromRGB(190, 185, 187),  -- Secondary text (lighter gray)
+    TertiaryText = Color3.fromRGB(157, 150, 152),   -- Tertiary text (light gray)
+    Hovering = Color3.fromRGB(75, 64, 68),       -- Hovering background (dark red)
+    Accent = Color3.fromRGB(242, 88, 88),        -- Accent color (red)
+    DarkerAccent = Color3.fromRGB(196, 71, 71),  -- Darker accent color (darker red)
+    AccentText = Color3.fromRGB(255, 255, 255)   -- Accent text color (white)
 }
+
 
 
   
