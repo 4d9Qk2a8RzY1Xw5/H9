@@ -86,8 +86,8 @@ end
 	return Vector2.new(UserInputService:GetMouseLocation().X + 1, UserInputService:GetMouseLocation().Y - 35)
   end
 
-  if not isfolder("SoulLink") then
-    makefolder("SoulLink")
+  if not isfolder("HASH9") then
+    makefolder("HASH9")
   end
   --//
   
@@ -118,7 +118,7 @@ end
   local SelectedTab = nil
   
   local Window = Utilities:Create("ScreenGui", {
-      Name = "SoulLink",
+      Name = "HASH9",
       ZIndexBehavior = Enum.ZIndexBehavior.Global
   }, {
       Utilities:Create("Frame", {
