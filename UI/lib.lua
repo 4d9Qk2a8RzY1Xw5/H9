@@ -126,7 +126,7 @@ end
           Size = UDim2.new(0, 553, 0, 252),
           BackgroundColor3 = Color3.fromRGB(255, 255, 255), -- Colors.Primary
           ClipsDescendants = true,
-          Position = UDim2.new(0, 405, 0, 207)
+          Position = UDim2.new(0, 805, 0, 419)
       }, {
           Utilities:Create("UIGradient", {
               Color = ColorSequence.new({
