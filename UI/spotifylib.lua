@@ -87,19 +87,20 @@ end
   --//
   
 Colors = {
-    Primary = Color3.fromRGB(255, 255, 255),  -- Background primary (white)
-    Secondary = Color3.fromRGB(235, 237, 240),  -- Background secondary
-    Tertiary = Color3.fromRGB(220, 221, 224),  -- Background tertiary
-    Divider = Color3.fromRGB(200, 203, 211),  -- Divider lines
-    AccentDivider = Color3.fromRGB(235, 237, 240),  -- Accent divider lines
-    PrimaryText = Color3.fromRGB(36, 39, 44),  -- Primary text (dark)
-    SecondaryText = Color3.fromRGB(116, 118, 122),  -- Secondary text
-    TertiaryText = Color3.fromRGB(157, 160, 166),  -- Tertiary text
-    Hovering = Color3.fromRGB(245, 246, 247),  -- Hovering background
-    Accent = Color3.fromRGB(114, 137, 218),  -- Accent color (Discord blurple)
-    DarkerAccent = Color3.fromRGB(103, 119, 184),  -- Darker accent color
+    Primary = Color3.fromRGB(25, 211, 97),     -- Background primary (green)
+    Secondary = Color3.fromRGB(15, 151, 69),   -- Background secondary (darker green)
+    Tertiary = Color3.fromRGB(10, 101, 49),    -- Background tertiary (even darker green)
+    Divider = Color3.fromRGB(0, 0, 0),          -- Divider lines (black)
+    AccentDivider = Color3.fromRGB(15, 151, 69),-- Accent divider lines (same as secondary)
+    PrimaryText = Color3.fromRGB(255, 255, 255),-- Primary text (white)
+    SecondaryText = Color3.fromRGB(185, 187, 190),-- Secondary text (light gray)
+    TertiaryText = Color3.fromRGB(150, 152, 157),-- Tertiary text (gray)
+    Hovering = Color3.fromRGB(15, 151, 69),     -- Hovering background (same as secondary)
+    Accent = Color3.fromRGB(29, 185, 84),       -- Accent color (Spotify green)
+    DarkerAccent = Color3.fromRGB(10, 101, 49), -- Darker accent color (same as tertiary)
     AccentText = Color3.fromRGB(255, 255, 255)  -- Accent text color (white)
 }
+
 
   
   function library:Window(WindowArgs)
