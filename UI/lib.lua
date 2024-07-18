@@ -118,10 +118,10 @@ local Colors = {
   }, {
       Utilities:Create("Frame", {
           Name = "Main",
-          Size = UDim2.new(0, 558, 0, 312),
+          Size = UDim2.new(0, 553, 0, 252),
           BackgroundColor3 = Color3.fromRGB(255, 255, 255), -- Colors.Primary
           ClipsDescendants = true,
-          Position = UDim2.new(0, 404, 0, 177)
+          Position = UDim2.new(0, 405, 0, 207)
       }, {
           Utilities:Create("UIGradient", {
               Color = ColorSequence.new({
@@ -218,12 +218,6 @@ local Colors = {
           })
       })
   })
-
-  UserInputService.InputBegan:Connect(function(Input, GameProcessed)
-    if Input.KeyCode == Enum.KeyCode.LeftAlt and not GameProcessed then
-        Window.Main.Visible = not Window.Main.Visible
-    end
-  end)
 
   local Console = Utilities:Create("Frame", {
     Name = "Console",
