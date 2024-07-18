@@ -87,19 +87,20 @@ end
   --//
   
 Colors = {
-    Primary = Color3.fromRGB(255, 182, 193),    -- Pink primary
-    Secondary = Color3.fromRGB(255, 192, 203),  -- Lighter pink secondary
-    Tertiary = Color3.fromRGB(255, 105, 180),   -- Hot pink tertiary
-    Divider = Color3.fromRGB(255, 192, 203),    -- Lighter pink divider lines
-    AccentDivider = Color3.fromRGB(255, 105, 180),  -- Accent hot pink divider lines
+    Primary = Color3.fromRGB(102, 204, 0),      -- Venom green primary
+    Secondary = Color3.fromRGB(153, 255, 0),    -- Lighter venom green secondary
+    Tertiary = Color3.fromRGB(51, 153, 0),      -- Darker venom green tertiary
+    Divider = Color3.fromRGB(153, 255, 0),      -- Lighter venom green divider lines
+    AccentDivider = Color3.fromRGB(102, 204, 0),  -- Accent venom green divider lines
     PrimaryText = Color3.fromRGB(0, 0, 0),      -- Black primary text
-    SecondaryText = Color3.fromRGB(255, 182, 193), -- Pink secondary text
-    TertiaryText = Color3.fromRGB(255, 105, 180),  -- Hot pink tertiary text
-    Hovering = Color3.fromRGB(255, 182, 193),   -- Pink hovering background
-    Accent = Color3.fromRGB(255, 105, 180),     -- Hot pink accent color
-    DarkerAccent = Color3.fromRGB(255, 20, 147),  -- Darker hot pink accent color
-    AccentText = Color3.fromRGB(255, 192, 203)  -- Lighter pink accent text
+    SecondaryText = Color3.fromRGB(102, 204, 0),  -- Venom green secondary text
+    TertiaryText = Color3.fromRGB(51, 153, 0),   -- Darker venom green tertiary text
+    Hovering = Color3.fromRGB(153, 255, 0),     -- Lighter venom green hovering background
+    Accent = Color3.fromRGB(51, 153, 0),        -- Darker venom green accent color
+    DarkerAccent = Color3.fromRGB(0, 102, 0),   -- Even darker venom green accent color
+    AccentText = Color3.fromRGB(153, 255, 0)    -- Lighter venom green accent text
 }
+
 
 
 
