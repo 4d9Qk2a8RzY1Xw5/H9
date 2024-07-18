@@ -86,22 +86,6 @@ end
   end
   --//
   
-if theme == "Light" then
-    Colors = {
-        Primary = Color3.fromRGB(255, 255, 255),  -- Background primary (white)
-        Secondary = Color3.fromRGB(245, 245, 245),  -- Background secondary (light grey)
-        Tertiary = Color3.fromRGB(230, 230, 230),  -- Background tertiary (lighter grey)
-        Divider = Color3.fromRGB(220, 220, 220),  -- Divider lines (very light grey)
-        AccentDivider = Color3.fromRGB(200, 200, 200),  -- Accent divider lines (light grey)
-        PrimaryText = Color3.fromRGB(32, 34, 37),  -- Primary text (dark grey)
-        SecondaryText = Color3.fromRGB(72, 75, 80),  -- Secondary text (medium grey)
-        TertiaryText = Color3.fromRGB(115, 118, 125),  -- Tertiary text (light grey)
-        Hovering = Color3.fromRGB(240, 240, 240),  -- Hovering background (very light grey)
-        Accent = Color3.fromRGB(88, 101, 242),  -- Accent color (Discord blurple)
-        DarkerAccent = Color3.fromRGB(71, 82, 196),  -- Darker accent color
-        AccentText = Color3.fromRGB(255, 255, 255)  -- Accent text color (white)
-    }
-else
     Colors = {
         Primary = Color3.fromRGB(54, 57, 63),  -- Background primary
         Secondary = Color3.fromRGB(47, 49, 54),  -- Background secondary
@@ -116,7 +100,6 @@ else
         DarkerAccent = Color3.fromRGB(71, 82, 196),  -- Darker accent color
         AccentText = Color3.fromRGB(255, 255, 255)  -- Accent text color
     }
-end
   
   function library:Window(WindowArgs)
   WindowArgs.Text = WindowArgs.Text or "Window"
