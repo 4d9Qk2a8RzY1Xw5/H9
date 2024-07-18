@@ -13,8 +13,10 @@ local library = {
   local RunService = game:GetService("RunService")
   
   local ViewportSize = workspace.CurrentCamera.ViewportSize
-  
-  local Mouse = game.Players.LocalPlayer:GetMouse()
+
+
+  local Players = game:GetService("Players")
+  local Mouse = Players.LocalPlayer:GetMouse()
   
   local Utilities = {}
 
