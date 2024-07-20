@@ -13,7 +13,7 @@ end
 --// Important 
 local Setup = {
 	Keybind = Enum.KeyCode.LeftControl,
-	Transparency = 0.2,
+	Transparency = 0,
 	ThemeMode = "Dark",
 	Size = nil,
 }
@@ -22,7 +22,7 @@ local Theme = { --// (Dark Theme)
 	--// Frames:
 	Primary = Color3.fromRGB(27, 25, 27),
 	Secondary = Color3.fromRGB(47, 49, 54),
-	Component = Color3.fromRGB(40, 40, 40),
+	Component = Color3.fromRGB(49, 41, 49),
 	Interactables = Color3.fromRGB(45, 45, 45),
 
 	--// Text:
