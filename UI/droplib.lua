@@ -1,7 +1,6 @@
---https://v3rmillion.net/showthread.php?tid=1182163
 local library = {}
 library.Flags = {}
-library.DefaultColor = Color3.fromRGB(56, 207, 154)
+library.DefaultColor = Color3.fromRGB(88, 101, 242)
 
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
@@ -14,7 +13,7 @@ local UserInputService = game:GetService("UserInputService")
 local Blacklist = {Enum.KeyCode.Unknown, Enum.KeyCode.CapsLock, Enum.KeyCode.Escape, Enum.KeyCode.Tab, Enum.KeyCode.Return, Enum.KeyCode.Backspace, Enum.KeyCode.Space, Enum.KeyCode.W, Enum.KeyCode.A, Enum.KeyCode.S, Enum.KeyCode.D}
 
 for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-    if v.Name == "Revenant" then
+    if v.Name == "Dropper" then
         v:Destroy()
     end
 end
@@ -27,7 +26,7 @@ end
 
 function library:Toggle()
     for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-        if v.Name == "Revenant" then
+        if v.Name == "Dropper" then
             v.Enabled = not v.Enabled
         end
     end
@@ -130,37 +129,33 @@ end
 local Request = syn and syn.request or http and http.request or http_request or request or httprequest
 local getcustomasset = getcustomasset or getsynasset
 
-if not isfolder("Revenant") then
-    makefolder("Revenant")
+if not isfolder("Dropper") then
+    makefolder("Dropper")
     local Circle = Request({
-	Url = "https://github.com/Rain-Design/Libraries/blob/main/Icon/Circle.png?raw=true",
+	Url = "https://raw.githubusercontent.com/4d9Qk2a8RzY1Xw5/H9/main/UI/icons/Circle.png",
 	Method = "GET"
 	})
-	writefile("Revenant/Circle.png", Circle.Body)
-	library:Notification({
-        Text = "Downloaded Toggle Asset.",
-        Duration = 3
-    })
+	writefile("Dropper/Circle.png", Circle.Body)
 end
 
 function library:Window(Info)
-Info.Text = Info.Text or "Revenant"
+Info.Text = Info.Text or "Dropper"
 
 local Pos = 0.05
 
 for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-    if v.Name == "Revenant" then
+    if v.Name == "Dropper" then
         Pos = Pos + 0.12
     end
 end
 
 local insidewindow = {}
 
-local revenant = Instance.new("ScreenGui")
-revenant.Name = "Revenant"
-revenant.Parent = game:GetService("CoreGui")
+local Dropper = Instance.new("ScreenGui")
+Dropper.Name = "Dropper"
+Dropper.Parent = game:GetService("CoreGui")
 
-local WindowOpened = Instance.new("BoolValue", revenant)
+local WindowOpened = Instance.new("BoolValue", Dropper)
 WindowOpened.Value = true
 
 local topbar = Instance.new("Frame")
@@ -168,7 +163,7 @@ topbar.Name = "Topbar"
 topbar.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
 topbar.Position = UDim2.fromScale(Pos, 0.1)
 topbar.Size = UDim2.fromOffset(225, 38)
-topbar.Parent = revenant
+topbar.Parent = Dropper
 
 local dragging
 local dragInput
@@ -543,7 +538,7 @@ uICorner1.Parent = outerFrame
 
 local innerFrame = Instance.new("ImageLabel")
 innerFrame.Name = "InnerFrame"
-innerFrame.Image = getcustomasset("Revenant/Circle.png")
+innerFrame.Image = getcustomasset("Dropper/Circle.png")
 innerFrame.ResampleMode = "Pixelated"
 innerFrame.ImageColor3 = Color3.fromRGB(255, 255, 255)
 innerFrame.BackgroundTransparency = 1
@@ -1123,26 +1118,6 @@ windowText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 windowText.BackgroundTransparency = 1
 windowText.Size = UDim2.fromOffset(225, 38)
 windowText.Parent = topbar
-
-local close = Instance.new("ImageButton")
-close.Name = "Close"
-close.Image = "rbxassetid://7733717447"
-close.Active = true
-close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-close.BackgroundTransparency = 1
-close.Position = UDim2.fromScale(0.876, 0.263)
-close.Selectable = false
-close.Size = UDim2.fromOffset(17, 17)
-close.Parent = topbar
-
-close.MouseButton1Click:Connect(function()
-    WindowOpened.Value = not WindowOpened.Value
-    
-    backgroundFrame.ClipsDescendants = WindowOpened.Value and false or true
-    TweenService:Create(backgroundFrame, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {Size = WindowOpened.Value and UDim2.new(0, 225, 0, BackgroundSize) or UDim2.new(0, 225, 0, 0)}):Play()
-    TweenService:Create(close, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {Rotation = WindowOpened.Value and 0 or 180}):Play()
-end)
-
 return insidewindow
 end
 return library
