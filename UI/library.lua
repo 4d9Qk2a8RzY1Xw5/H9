@@ -1,4 +1,4 @@
--- // this is a modded PPHUB lib (not claiming creation of the base of the ui)
+-- // this is a modded PPHUD lib (not claiming creation of the base of the ui)
 -- // me: i removed things that wld trigger bypass and changed ui to my theme
 
 local library = {
