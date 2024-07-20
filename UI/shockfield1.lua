@@ -20,8 +20,8 @@ local Setup = {
 
 local Theme = { --// (Dark Theme)
 	--// Frames:
-	Primary = Color3.fromRGB(30, 30, 30),
-	Secondary = Color3.fromRGB(35, 35, 35),
+	Primary = Color3.fromRGB(27, 25, 27),
+	Secondary = Color3.fromRGB(47, 49, 54),
 	Component = Color3.fromRGB(40, 40, 40),
 	Interactables = Color3.fromRGB(45, 45, 45),
 
@@ -209,6 +209,7 @@ Screen.Main.Visible = false
 
 xpcall(function()
 	Screen.Parent = game.CoreGui
+		Screen.Name = "H9SF"
 end, function() 
 	Screen.Parent = Player.GUI
 end)
