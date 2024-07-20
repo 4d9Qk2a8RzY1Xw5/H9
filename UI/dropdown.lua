@@ -13,7 +13,7 @@ local UserInputService = game:GetService("UserInputService")
 local Blacklist = {Enum.KeyCode.Unknown, Enum.KeyCode.CapsLock, Enum.KeyCode.Escape, Enum.KeyCode.Tab, Enum.KeyCode.Return, Enum.KeyCode.Backspace, Enum.KeyCode.Space, Enum.KeyCode.W, Enum.KeyCode.A, Enum.KeyCode.S, Enum.KeyCode.D}
 
 for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-    if v.Name == "Dropper" then
+    if v.Name == "HASH11" then
         v:Destroy()
     end
 end
@@ -26,7 +26,7 @@ end
 
 function library:Toggle()
     for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-        if v.Name == "Dropper" then
+        if v.Name == "HASH11" then
             v.Enabled = not v.Enabled
         end
     end
@@ -77,7 +77,7 @@ notificationText.Font = Enum.Font.GothamBold
 notificationText.Text = NotificationInfo.Text
 notificationText.TextColor3 = Color3.fromRGB(214, 214, 214)
 notificationText.TextSize = 14
-notificationText.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+notificationText.BackgroundColor3 = Color3.fromRGB(47, 49, 54)
 notificationText.BorderSizePixel = 0
 notificationText.Position = UDim2.fromScale(0, 0.954)
 notificationText.Size = UDim2.fromOffset(0, 38)
@@ -129,41 +129,41 @@ end
 local Request = syn and syn.request or http and http.request or http_request or request or httprequest
 local getcustomasset = getcustomasset or getsynasset
 
-if not isfolder("Dropper") then
-    makefolder("Dropper")
+if not isfolder("HASH11") then
+    makefolder("HASH11")
     local Circle = Request({
 	Url = "https://raw.githubusercontent.com/4d9Qk2a8RzY1Xw5/H9/main/UI/icons/Circle.png",
 	Method = "GET"
 	})
-	writefile("Dropper/Circle.png", Circle.Body)
+	writefile("HASH11/Circle.png", Circle.Body)
 end
 
 function library:Window(Info)
-Info.Text = Info.Text or "Dropper"
+Info.Text = Info.Text or "HASH11"
 
 local Pos = 0.05
 
 for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-    if v.Name == "Dropper" then
+    if v.Name == "HASH11" then
         Pos = Pos + 0.12
     end
 end
 
 local insidewindow = {}
 
-local Dropper = Instance.new("ScreenGui")
-Dropper.Name = "Dropper"
-Dropper.Parent = game:GetService("CoreGui")
+local HASH11 = Instance.new("ScreenGui")
+HASH11.Name = "HASH11"
+HASH11.Parent = game:GetService("CoreGui")
 
-local WindowOpened = Instance.new("BoolValue", Dropper)
+local WindowOpened = Instance.new("BoolValue", HASH11)
 WindowOpened.Value = true
 
 local topbar = Instance.new("Frame")
 topbar.Name = "Topbar"
-topbar.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+topbar.BackgroundColor3 = Color3.fromRGB(47, 49, 54)
 topbar.Position = UDim2.fromScale(Pos, 0.1)
 topbar.Size = UDim2.fromOffset(225, 38)
-topbar.Parent = Dropper
+topbar.Parent = HASH11
 
 local dragging
 local dragInput
@@ -210,7 +210,7 @@ local BackgroundSize = 0
 
 local backgroundFrame = Instance.new("Frame")
 backgroundFrame.Name = "BackgroundFrame"
-backgroundFrame.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+backgroundFrame.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 backgroundFrame.BorderSizePixel = 0
 backgroundFrame.ClipsDescendants = false
 backgroundFrame.Position = UDim2.fromScale(0, 1)
@@ -225,7 +225,7 @@ uICorner1.Parent = backgroundFrame
 local fixLine = Instance.new("Frame")
 fixLine.Name = "FixLine"
 fixLine.AnchorPoint = Vector2.new(0.5, 0)
-fixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+fixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 fixLine.BorderSizePixel = 0
 fixLine.Position = UDim2.fromScale(0.5, 0)
 fixLine.Size = UDim2.fromOffset(225, 2)
@@ -235,7 +235,7 @@ fixLine.ZIndex = 2
 local itemContainer = Instance.new("Frame")
 itemContainer.Name = "ItemContainer"
 itemContainer.AnchorPoint = Vector2.new(0.5, 0)
-itemContainer.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+itemContainer.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 itemContainer.BackgroundTransparency = 1
 itemContainer.BorderSizePixel = 0
 itemContainer.Position = UDim2.fromScale(0.5, 0)
@@ -269,7 +269,7 @@ Info.Callback = Info.Callback or function() end
 
 local button = Instance.new("Frame")
 button.Name = "Button"
-button.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+button.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 button.Size = UDim2.fromOffset(225, 38)
 button.Parent = itemContainer
 
@@ -281,7 +281,7 @@ uICorner2.Parent = button
 local fixLine1 = Instance.new("Frame")
 fixLine1.Name = "FixLine"
 fixLine1.AnchorPoint = Vector2.new(0.5, 1)
-fixLine1.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+fixLine1.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 fixLine1.BorderSizePixel = 0
 fixLine1.Position = UDim2.fromScale(0.5, 0.0526)
 fixLine1.Size = UDim2.fromOffset(225, 4)
@@ -318,8 +318,8 @@ button.MouseEnter:Connect(function()
 end)
 
 button.MouseLeave:Connect(function()
-    fixLine1.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-    button.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+    fixLine1.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
+    button.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 end)
 
 buttonTextButton.MouseButton1Click:Connect(function()
@@ -334,7 +334,7 @@ Info.OnCancel = Info.OnCancel or function() end
     
 local prompt = Instance.new("Frame")
 prompt.Name = "Prompt"
-prompt.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+prompt.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 prompt.Size = UDim2.fromOffset(225, 38)
 prompt.Parent = itemContainer
 
@@ -346,7 +346,7 @@ promptUICorner.Parent = prompt
 local promptFixLine = Instance.new("Frame")
 promptFixLine.Name = "PromptFixLine"
 promptFixLine.AnchorPoint = Vector2.new(0.5, 1)
-promptFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+promptFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 promptFixLine.BorderSizePixel = 0
 promptFixLine.Position = UDim2.fromScale(0.5, 0.0526)
 promptFixLine.Size = UDim2.fromOffset(225, 4)
@@ -391,8 +391,8 @@ prompt.MouseEnter:Connect(function()
 end)
 
 prompt.MouseLeave:Connect(function()
-    promptFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-    prompt.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+    promptFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
+    prompt.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 end)
 
 cancelPromptButton.MouseButton1Click:Connect(function()
@@ -414,7 +414,7 @@ local insidelabel = {}
 
 local label = Instance.new("Frame")
 label.Name = "Label"
-label.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+label.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 label.Size = UDim2.fromOffset(225, 38)
 label.Parent = itemContainer
 
@@ -426,7 +426,7 @@ labelUICorner.Parent = label
 local labelFixLine = Instance.new("Frame")
 labelFixLine.Name = "LabelFixLine"
 labelFixLine.AnchorPoint = Vector2.new(0.5, 1)
-labelFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+labelFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 labelFixLine.BorderSizePixel = 0
 labelFixLine.Position = UDim2.fromScale(0.5, 0.0526)
 labelFixLine.Size = UDim2.fromOffset(225, 4)
@@ -451,8 +451,8 @@ label.MouseEnter:Connect(function()
 end)
 
 label.MouseLeave:Connect(function()
-    labelFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-    label.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+    labelFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
+    label.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 end)
 
 function insidelabel:Set(InsideInfo)
@@ -480,7 +480,7 @@ local Toggled = false
     
 local toggle = Instance.new("Frame")
 toggle.Name = "Toggle"
-toggle.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+toggle.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 toggle.Size = UDim2.fromOffset(225, 38)
 toggle.Parent = itemContainer
 
@@ -492,7 +492,7 @@ uICorner.Parent = toggle
 local fixLineToggle = Instance.new("Frame")
 fixLineToggle.Name = "FixLine"
 fixLineToggle.AnchorPoint = Vector2.new(0.5, 1)
-fixLineToggle.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+fixLineToggle.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 fixLineToggle.BorderSizePixel = 0
 fixLineToggle.Position = UDim2.fromScale(0.5, 0.0526)
 fixLineToggle.Size = UDim2.fromOffset(225, 4)
@@ -538,7 +538,7 @@ uICorner1.Parent = outerFrame
 
 local innerFrame = Instance.new("ImageLabel")
 innerFrame.Name = "InnerFrame"
-innerFrame.Image = getcustomasset("Dropper/Circle.png")
+innerFrame.Image = getcustomasset("HASH11/Circle.png")
 innerFrame.ResampleMode = "Pixelated"
 innerFrame.ImageColor3 = Color3.fromRGB(255, 255, 255)
 innerFrame.BackgroundTransparency = 1
@@ -556,8 +556,8 @@ toggle.MouseEnter:Connect(function()
 end)
 
 toggle.MouseLeave:Connect(function()
-    fixLineToggle.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-    toggle.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+    fixLineToggle.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
+    toggle.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 end)
 
 function insidetoggle:Set(ToggleInfo)
@@ -592,7 +592,7 @@ local DropdownSize = 0
     
 local dropdown = Instance.new("Frame")
 dropdown.Name = "Dropdown"
-dropdown.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+dropdown.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 dropdown.Size = UDim2.fromOffset(225, 38)
 dropdown.Parent = itemContainer
 
@@ -604,7 +604,7 @@ dropdownUICorner.Parent = dropdown
 local dropdownFixLine = Instance.new("Frame")
 dropdownFixLine.Name = "DropdownFixLine"
 dropdownFixLine.AnchorPoint = Vector2.new(0.5, 1)
-dropdownFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+dropdownFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 dropdownFixLine.BorderSizePixel = 0
 dropdownFixLine.Position = UDim2.fromScale(0.5, 0.04)
 dropdownFixLine.ZIndex = 2
@@ -649,7 +649,7 @@ dropdownContainerButton.Parent = dropdown
 local dropdownContainerBackground = Instance.new("Frame")
 dropdownContainerBackground.Visible = true
 dropdownContainerBackground.Name = "DropdownContainerBackground"
-dropdownContainerBackground.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+dropdownContainerBackground.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 dropdownContainerBackground.BorderSizePixel = 0
 dropdownContainerBackground.Position = UDim2.fromScale(0, 1)
 dropdownContainerBackground.Size = UDim2.fromOffset(225, 0)
@@ -660,7 +660,7 @@ dropdownContainerBackground.Parent = dropdown
 local dropdownFixLine1 = Instance.new("Frame")
 dropdownFixLine1.Name = "DropdownFixLine"
 dropdownFixLine1.AnchorPoint = Vector2.new(0.5, 0)
-dropdownFixLine1.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+dropdownFixLine1.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 dropdownFixLine1.BorderSizePixel = 0
 dropdownFixLine1.Position = UDim2.new(0.5, 0, 0, -2)
 dropdownFixLine1.Size = UDim2.fromOffset(225, 4)
@@ -695,8 +695,8 @@ dropdown.MouseEnter:Connect(function()
 end)
 
 dropdown.MouseLeave:Connect(function()
-    dropdownFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-    dropdown.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+    dropdownFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
+    dropdown.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 end)
 
 local Opened = false
@@ -716,7 +716,7 @@ Info2.Text = Info2.Text or "Option"
 
 local buttonDropdown = Instance.new("Frame")
 buttonDropdown.Name = "ButtonDropdown"
-buttonDropdown.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+buttonDropdown.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 buttonDropdown.Size = UDim2.fromOffset(225, 27)
 buttonDropdown.ZIndex = 3
 buttonDropdown.Parent = dropdownContainer
@@ -758,7 +758,7 @@ buttonDropdown.MouseEnter:Connect(function()
 end)
 
 buttonDropdown.MouseLeave:Connect(function()
-    buttonDropdown.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+    buttonDropdown.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 end)
 
 WindowOpened:GetPropertyChangedSignal("Value"):Connect(function()
@@ -811,7 +811,7 @@ local PressKey = Info.Default
     
 local keybind = Instance.new("Frame")
 keybind.Name = "Keybind"
-keybind.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+keybind.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 keybind.Size = UDim2.fromOffset(225, 38)
 keybind.Parent = itemContainer
 
@@ -823,7 +823,7 @@ keybindUICorner.Parent = keybind
 local keybindFixLine = Instance.new("Frame")
 keybindFixLine.Name = "KeybindFixLine"
 keybindFixLine.AnchorPoint = Vector2.new(0.5, 1)
-keybindFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+keybindFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 keybindFixLine.BorderSizePixel = 0
 keybindFixLine.Position = UDim2.fromScale(0.5, 0.0526)
 keybindFixLine.Size = UDim2.fromOffset(225, 4)
@@ -893,8 +893,8 @@ keybind.MouseEnter:Connect(function()
 end)
 
 keybind.MouseLeave:Connect(function()
-    keybindFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-    keybind.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+    keybindFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
+    keybind.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 end)
 
 local TextBounds = keybindText.TextBounds
@@ -956,7 +956,7 @@ local insideslider = {}
     
 local slider = Instance.new("Frame")
 slider.Name = "Slider"
-slider.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+slider.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 slider.Size = UDim2.fromOffset(225, 38)
 slider.Parent = itemContainer
 
@@ -968,7 +968,7 @@ sliderUICorner.Parent = slider
 local sliderFixLine = Instance.new("Frame")
 sliderFixLine.Name = "SliderFixLine"
 sliderFixLine.AnchorPoint = Vector2.new(0.5, 1)
-sliderFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+sliderFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 sliderFixLine.BorderSizePixel = 0
 sliderFixLine.Position = UDim2.fromScale(0.5, 0.0526)
 sliderFixLine.Size = UDim2.fromOffset(225, 4)
@@ -1067,8 +1067,8 @@ slider.MouseEnter:Connect(function()
 end)
 
 slider.MouseLeave:Connect(function()
-    sliderFixLine.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-    slider.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+    sliderFixLine.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
+    slider.BackgroundColor3 = Color3.fromRGB(27, 25, 27)
 end)
 
 local MinSize = 0
@@ -1101,7 +1101,7 @@ end
 local fixLine2 = Instance.new("Frame")
 fixLine2.Name = "FixLine"
 fixLine2.AnchorPoint = Vector2.new(0.5, 1)
-fixLine2.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+fixLine2.BackgroundColor3 = Color3.fromRGB(88, 101, 242)
 fixLine2.BorderSizePixel = 0
 fixLine2.Position = UDim2.fromScale(0.5, 1)
 fixLine2.Size = UDim2.fromOffset(225, 2)
