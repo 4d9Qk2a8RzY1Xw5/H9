@@ -1,10 +1,3 @@
---[[
-  UI lib made by bungie#0001
-  
-  - Please do not use this without permission, I am working really hard on this UI to make it perfect and do not have a big 
-    problem with other people using it, please just make sure you message me and ask me before using.
-]]
-
 -- / Locals
 local Workspace = game:GetService("Workspace")
 local Player = game:GetService("Players").LocalPlayer
@@ -3183,7 +3176,7 @@ function library:Init(key)
             return SelectorFunctions
         end
         --
-function Components:NewSlider(text, suffix, compare, compareSign, values, callback, step)
+function Components:NewSlider(text, suffix, compare, compareSign, values, callback)
     text = text or "slider"
     suffix = suffix or ""
     compare = compare or false
@@ -3191,9 +3184,9 @@ function Components:NewSlider(text, suffix, compare, compareSign, values, callba
     values = values or {
         min = values.min or 0,
         max = values.max or 100,
-        default = values.default or 0
+        default = values.default or 0,
+        step = values.step or 1
     }
-    step = step or 1
     callback = callback or function() end
 
     values.max = values.max + step
